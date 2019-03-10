@@ -113,7 +113,8 @@ def xldate_as_tuple(xldate, datemode):
         return (0, 0, 0, hour, minute, second)
 
     if xldays < 61 and datemode == 0:
-        raise XLDateAmbiguous(xldate)
+        return (0, 0, 0, 0, 0, 0)
+        #raise XLDateAmbiguous(xldate)
 
     jdn = xldays + _JDN_delta[datemode]
     yreg = ((((jdn * 4 + 274277) // 146097) * 3 // 4) + jdn + 1363) * 4 + 3
